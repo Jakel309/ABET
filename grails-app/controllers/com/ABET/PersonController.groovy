@@ -5,19 +5,24 @@ package com.ABET
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import com.ABET.RoleService
+import com.ABET.PersonService
+import com.ABET.PersonRoleService
+import com.ABET.PersonRole
 
 @Transactional(readOnly = true)
 class PersonController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 	def roleService
+	def personService
+	def personRoleService
 
 	def getRoles(){
 		return roleService.getRoles()
 	}
 	
-	def hasRole(id){
-		return roleService.hasRole(id)
+	def translateRole(id){
+		return personService.translateRole(id)
 	}
 	
     def index(Integer max) {
@@ -49,8 +54,9 @@ class PersonController {
 
         request.withFormat {
             form multipartForm {
+				personRoleService.createPR(personInstance.id, personInstance.roleId)
                 flash.message = message(code: 'default.created.message', args: [message(code: 'person.label', default: 'Person'), personInstance.id])
-                redirect personInstance
+                redirect (action:'index')
             }
             '*' { respond personInstance, [status: CREATED] }
         }
@@ -71,15 +77,15 @@ class PersonController {
             respond personInstance.errors, view:'edit'
             return
         }
-		
-		println personInstance.id
 
         personInstance.save flush:true
+		
+		personRoleService.updatePR(personInstance.id, personInstance.roleId)
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Person.label', default: 'Person'), personInstance.id])
-                redirect personInstance
+                redirect (action:'index')
             }
             '*'{ respond personInstance, [status: OK] }
         }

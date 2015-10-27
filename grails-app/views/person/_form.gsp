@@ -57,3 +57,21 @@
 	<g:checkBox name="passwordExpired" value="${personInstance?.passwordExpired}" />
 
 </div>
+
+<div class="fieldcontain ${hasErrors(bean: personInstance, field: 'roleId', 'error')} ">
+    <label for="roleId">
+        <g:message code="person.roleId.label" default="Role ID" />
+        
+    </label>
+    
+    <select name="roleId">
+        <g:each in="${personCont.getRoles()}" var="opt">
+            <g:if test="${personInstance?.roleId==opt[0]}">
+                <option selected="selected" value="${opt[0] }">${opt[1] }</option>            
+            </g:if>
+            <g:else>
+                <option value="${opt[0] }">${opt[1] }</option>
+            </g:else>
+        </g:each>
+    </select>
+</div>

@@ -1,5 +1,8 @@
 
 <%@ page import="com.ABET.Person" %>
+<%
+  def pCont = grailsApplication.classLoader.loadClass('com.ABET.PersonController').newInstance()
+ %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -33,6 +36,8 @@
 						<g:sortableColumn property="enabled" title="${message(code: 'person.enabled.label', default: 'Enabled')}" />
 					
 						<g:sortableColumn property="passwordExpired" title="${message(code: 'person.passwordExpired.label', default: 'Password Expired')}" />
+						
+						<g:sortableColumn property="roleId" title="${message(code: 'person.roleId.label', default: 'Role')}" />
 					
 					</tr>
 				</thead>
@@ -40,7 +45,7 @@
 				<g:each in="${personInstanceList}" status="i" var="personInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${personInstance.id}">${fieldValue(bean: personInstance, field: "username")}</g:link></td>
+						<td><g:link action="edit" id="${personInstance.id}">${fieldValue(bean: personInstance, field: "username")}</g:link></td>
 					
 						<td><g:formatBoolean boolean="${personInstance.accountExpired}" /></td>
 					
@@ -49,6 +54,8 @@
 						<td><g:formatBoolean boolean="${personInstance.enabled}" /></td>
 					
 						<td><g:formatBoolean boolean="${personInstance.passwordExpired}" /></td>
+						
+						<td>${pCont.translateRole(personInstance.roleId)}</td>
 					
 					</tr>
 				</g:each>
