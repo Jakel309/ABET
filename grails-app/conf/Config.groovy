@@ -132,6 +132,15 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/js/**':        ['IS_AUTHENTICATED_ANONYMOUSLY'],
 	'/**/css/**':       ['IS_AUTHENTICATED_ANONYMOUSLY'],
 	'/**/images/**':    ['IS_AUTHENTICATED_ANONYMOUSLY'],
-	'/**/favicon.ico':  ['IS_AUTHENTICATED_ANONYMOUSLY']
+	'/**/favicon.ico':  ['IS_AUTHENTICATED_ANONYMOUSLY'],
+	'/login/**':		['IS_AUTHENTICATED_ANONYMOUSLY'],
+	'/logout/**':		['IS_AUTHENTICATED_ANONYMOUSLY']
 ]
 
+grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/index'
+
+grails.plugin.springsecurity.logout.postOnly = false
+grails.plugin.springsecurity.securityConfigType = "Annotation"
+
+grails.plugin.springsecurity.rejectIfNoRule = false
+grails.plugin.springsecurity.fii.rejectPublicInvocations = true

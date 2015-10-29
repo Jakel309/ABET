@@ -8,7 +8,11 @@ import com.ABET.RoleService
 import com.ABET.PersonService
 import com.ABET.PersonRoleService
 import com.ABET.PersonRole
+import grails.plugin.springsecurity.annotation.Secured
+import grails.plugin.springsecurity.SpringSecurityService
+import grails.plugin.springsecurity.SpringSecurityUtils
 
+@Secured(['ROLE_ADMIN'])
 @Transactional(readOnly = true)
 class PersonController {
 
