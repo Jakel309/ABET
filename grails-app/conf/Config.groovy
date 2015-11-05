@@ -90,11 +90,15 @@ grails.config.location=[]
 environments {
     development {
         grails.logging.jul.usebridge = true
+		println "Running in development"
     }
     production {
         grails.logging.jul.usebridge = false
-        grails.config.locations=["file:etc/abet/abet-config.groovy"]
-		grails.serverURL = "http://www.ec2-52-11-175-168.us-west-2.compute.amazonaws.com"
+        grails.config.locations=["file:${userHome}/abet-config.groovy"]
+		//grails.serverURL = "http://www.ec2-52-11-175-168.us-west-2.compute.amazonaws.com"
+		println "Running in production"
+		println grails.config.locations
+		println dataSource.url	
     }
 }
 

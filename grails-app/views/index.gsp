@@ -112,10 +112,10 @@
             <p>Everyone can see this</p>
             <sec:ifAllGranted roles="ROLE_ADMIN">
             <g:link controller="person">Create New User</g:link>
+            <br/>
             </sec:ifAllGranted>
-            <sec:ifAllGranted roles="ROLE_USER">
-            <p>Only common users can see this</p>
-            </sec:ifAllGranted>
+            <g:link controller="form">Form Management</g:link>
+            <br/>
             <g:link controller="logout">Logout</g:link>
         </div>
     </body>
