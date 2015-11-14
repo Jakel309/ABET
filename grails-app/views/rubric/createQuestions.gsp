@@ -7,7 +7,7 @@
     <g:form action="addQuestions" name="addQuestions">
         <g:each var='i' in="${1..numComp }">
             <p>
-                Question ${i}:<input type="text" name="question${i}" size=200 height=250/>
+                Rubric Question ${i}:<input type="text" name="question${i}" size=200 height=250/>
             </p>
         </g:each>
         <input type="text" name="name" value="${name }" hidden="true"/>

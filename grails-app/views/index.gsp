@@ -114,7 +114,7 @@
             <g:link controller="person">Create New User</g:link>
             <br/>
             </sec:ifAllGranted>
-            <g:link controller="form">Form Management</g:link>
+            <g:link controller="rubric">Rubric Management</g:link>
             <br/>
             <g:link controller="logout">Logout</g:link>
         </div>

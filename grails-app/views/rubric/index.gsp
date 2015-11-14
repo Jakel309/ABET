@@ -4,6 +4,6 @@
     <meta name="layout" content="main" />
 </head>
 <body>
-    <g:link action="newForm">Create New Form</g:link>
+    <g:link action="newRubric">Create New Rubric</g:link>
 </body>
 </html>
