@@ -3,6 +3,8 @@ package com.ABET
 class RubricController {
 
 	def rubricService
+	def worksheetService
+	def springSecurityService
 	
     def index() { }
 	
@@ -44,6 +46,17 @@ class RubricController {
 		}
 		println results
 		rubricService.addResults(results,params.id.toInteger())
+		render(view:'index')
+	}
+	
+	def getWorksheets(){
+		def id=springSecurityService.principal.getId()
+		def rows=worksheetService.getWorksheetsByUserId(id)
+		return rows
+	}
+	
+	def renderWorksheet(id){
+		println id
 		render(view:'index')
 	}
 }

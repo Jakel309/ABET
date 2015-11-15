@@ -113,6 +113,12 @@
             <sec:ifAllGranted roles="ROLE_ADMIN">
             <g:link controller="person">Create New User</g:link>
             <br/>
+            <g:link controller="program">Create New Program</g:link>
+            <br/>
+            <g:link controller="WSQuestions">Manage Worksheet Questions</g:link>
+            <br/>
+            <g:link controller="worksheet">Create And Distribute Worksheets</g:link>
+            <br/>
             </sec:ifAllGranted>
             <g:link controller="rubric">Rubric Management</g:link>
             <br/>

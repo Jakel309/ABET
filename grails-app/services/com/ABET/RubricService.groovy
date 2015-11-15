@@ -12,7 +12,7 @@ class RubricService {
 
     def addRubric(String name, int numComp) {
 		def sql=new Sql(dataSource)
-		sql.execute("""insert into rubrics (name,num_ques) values (?,?)""",name,numComp)
+		sql.execute("""insert into rubrics (version,name,num_ques) values (1,?,?)""",name,numComp)
     }
 	
 	def getRubricIdByName(String name){
@@ -23,7 +23,7 @@ class RubricService {
 	
 	def createQuestion(String question, int id){
 		def sql=new Sql(dataSource)
-		sql.execute("""insert into questions(question, r_id) values (?,?)""",question,id)
+		sql.execute("""insert into questions(version, question, r_id) values (1,?,?)""",question,id)
 	}
 	
 	def getRubrics(){
@@ -46,7 +46,7 @@ class RubricService {
 	
 	def addResults(Map results,id){
 		def sql=new Sql(dataSource)
-		sql.execute("""insert into results (results,r_id) values (?,?)""",new JsonBuilder(results).toString(), id)
+		sql.execute("""insert into results (version,results,r_id) values (1,?,?)""",new JsonBuilder(results).toString(), id)
 	}
 	
 	//This is for proof of concept to convert from clob to map. It's painful

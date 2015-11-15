@@ -4,9 +4,6 @@ package com.ABET
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
-import com.ABET.RoleService
-import com.ABET.PersonService
-import com.ABET.PersonRoleService
 import com.ABET.PersonRole
 import grails.plugin.springsecurity.annotation.Secured
 import grails.plugin.springsecurity.SpringSecurityService
@@ -20,6 +17,7 @@ class PersonController {
 	def roleService
 	def personService
 	def personRoleService
+	def programService
 
 	def getRoles(){
 		return roleService.getRoles()
@@ -27,6 +25,18 @@ class PersonController {
 	
 	def translateRole(id){
 		return personService.translateRole(id)
+	}
+	
+	def getPrograms(){
+		programService.getPrograms()
+	}
+	
+	def getPersons(){
+		personService.getPersons()
+	}
+	
+	def translatePerson(id){
+		personService.translatePerson(id)
 	}
 	
     def index(Integer max) {

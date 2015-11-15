@@ -13,6 +13,8 @@ class Person implements Serializable {
 	boolean accountLocked
 	boolean passwordExpired
 	int roleId
+	String email
+	//String program
 
 	Person(String username, String password) {
 		this()

@@ -75,3 +75,12 @@
         </g:each>
     </select>
 </div>
+
+<div class="fieldcontain ${hasErrors(bean: personInstance, field: 'email', 'error')} required">
+    <label for="email">
+        <g:message code="person.email.label" default="Email" />
+        <span class="required-indicator">*</span>
+    </label>
+    <g:textField name="email" required="" value="${personInstance?.email}"/>
+
+</div>

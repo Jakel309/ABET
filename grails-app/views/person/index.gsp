@@ -38,6 +38,8 @@
 						<g:sortableColumn property="passwordExpired" title="${message(code: 'person.passwordExpired.label', default: 'Password Expired')}" />
 						
 						<g:sortableColumn property="roleId" title="${message(code: 'person.roleId.label', default: 'Role')}" />
+						
+						<g:sortableColumn property="email" title="${message(code: 'person.email.label', default: 'Email')}" />
 					
 					</tr>
 				</thead>
@@ -56,6 +58,8 @@
 						<td><g:formatBoolean boolean="${personInstance.passwordExpired}" /></td>
 						
 						<td>${pCont.translateRole(personInstance.roleId)}</td>
+						
+						<td>${personInstance.email }</td>
 					
 					</tr>
 				</g:each>
