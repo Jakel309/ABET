@@ -4,6 +4,10 @@
     <meta name="layout" content="main" />
 </head>
 <body>
-    <g:link action="newForm">Create New Form</g:link>
+	<div class='container'>
+		<div class='form-signin spacer'>
+    		<g:link action="newForm" class='btn btn-lg btn-primary btn-block'>Create New Form</g:link>
+    	</div>
+    </div>
 </body>
 </html>

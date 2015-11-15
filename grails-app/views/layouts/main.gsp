@@ -12,12 +12,17 @@
 		<link rel="shortcut icon" href="${assetPath(src: 'favicon.ico')}" type="image/x-icon">
 		<link rel="apple-touch-icon" href="${assetPath(src: 'apple-touch-icon.png')}">
 		<link rel="apple-touch-icon" sizes="114x114" href="${assetPath(src: 'apple-touch-icon-retina.png')}">
+  		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
   		<asset:stylesheet src="application.css"/>
 		<asset:javascript src="application.js"/>
+		<link rel="stylesheet" href="${resource(dir: 'css', file: 'styles.css')}" type="text/css">
 		<g:layoutHead/>
 	</head>
 	<body>
-		<div id="grailsLogo" role="banner"><a href="http://grails.org"><asset:image src="grails_logo.png" alt="Grails"/></a></div>
+		<!--   <div id="grailsLogo" role="banner"><a href="http://grails.org"><asset:image src="grails_logo.png" alt="Grails"/></a></div> -->
+		<div class="logoBackground" role="banner">
+			<div class ="logo ">ABET</div>
+		</div>
 		<g:layoutBody/>
 		<div class="footer" role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>

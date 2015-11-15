@@ -4,15 +4,19 @@
 <meta name="layout" content="main" />
 </head>
 <body>
-    <g:form action="addQuestions" name="addQuestions">
+	<div class='container'>
+    <g:form action="addQuestions" name="addQuestions" class='form-signin'>
+    	<h2 class="form-signin-heading">Add Your Questions</h2>
         <g:each var='i' in="${1..numComp }">
-            <p>
-                Question ${i}:<input type="text" name="question${i}" size=200 height=250/>
-            </p>
+        <p>
+            <label for='question' ${i} class="sr-only">Question ${i}</label>
+            <input type="text" name="question${i}" class='form-control' id='question${i} inputQ${i}' placeholder='question ${i}'/>
+        </p>
         </g:each>
         <input type="text" name="name" value="${name }" hidden="true"/>
         <input type="text" name="numComp" value="${numComp }" hidden="true"/>
-        <g:submitButton name="addQuestions" value="Add Questions" />
+        <g:submitButton name="addQuestions" value="Add Questions" class="btn btn-lg btn-primary btn-block"/>
     </g:form>
+    </div>
 </body>
 </html>

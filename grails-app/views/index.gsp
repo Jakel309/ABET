@@ -4,6 +4,7 @@
         <meta name="layout" content="main"/>
         <title>Welcome to Grails</title>
         <style type="text/css" media="screen">
+        /*
             #status {
                 background-color: #eee;
                 border: .2em solid #fff;
@@ -22,7 +23,7 @@
             .ie6 #status {
                 display: inline; /* float double margin fix http://www.positioniseverything.net/explorer/doubled-margin.html */
             }
-
+/*
             #status ul {
                 font-size: 0.9em;
                 list-style-type: none;
@@ -77,46 +78,25 @@
                 #page-body h1 {
                     margin-top: 0;
                 }
-            }
+            }*/
         </style>
     </head>
     <body>
-        <a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-        <div id="status" role="complementary">
-            <h1>Application Status</h1>
-            <ul>
-                <li>App version: <g:meta name="app.version"/></li>
-                <li>Grails version: <g:meta name="app.grails.version"/></li>
-                <li>Groovy version: ${GroovySystem.getVersion()}</li>
-                <li>JVM version: ${System.getProperty('java.version')}</li>
-                <li>Reloading active: ${grails.util.Environment.reloadingAgentEnabled}</li>
-                <li>Controllers: ${grailsApplication.controllerClasses.size()}</li>
-                <li>Domains: ${grailsApplication.domainClasses.size()}</li>
-                <li>Services: ${grailsApplication.serviceClasses.size()}</li>
-                <li>Tag Libraries: ${grailsApplication.tagLibClasses.size()}</li>
-            </ul>
-            <h1>Installed Plugins</h1>
-            <ul>
-                <g:each var="plugin" in="${applicationContext.getBean('pluginManager').allPlugins}">
-                    <li>${plugin.name} - ${plugin.version}</li>
-                </g:each>
-            </ul>
-        </div>
-        <div id="page-body" role="main">
-            <h1>Welcome to Grails</h1>
-            <p>Congratulations, you have successfully started your first Grails application! At the moment
-               this is the default page, feel free to modify it to either redirect to a controller or display whatever
-               content you may choose. Below is a list of controllers that are currently deployed in this application,
-               click on each to execute its default action:</p>
-               
-            <p>Everyone can see this</p>
+            <!--   <p>Everyone can see this</p> -->
+		<div class='container'>
+		<div class="form-signin spacer">
+		<p>
             <sec:ifAllGranted roles="ROLE_ADMIN">
-            <g:link controller="person">Create New User</g:link>
-            <br/>
+            <g:link controller="person" class="btn btn-lg btn-primary btn-block">Create New User</g:link>
+        <p/>
+        <p>
             </sec:ifAllGranted>
-            <g:link controller="form">Form Management</g:link>
-            <br/>
-            <g:link controller="logout">Logout</g:link>
+            <g:link controller="form"class="btn btn-lg btn-primary btn-block">Create a New Form</g:link>
+       	<p/>
+       	<p>
+            <g:link controller="logout" class="btn btn-lg btn-primary btn-block">Logout</g:link>
+        </p>
+        </div>
         </div>
     </body>
 </html>
