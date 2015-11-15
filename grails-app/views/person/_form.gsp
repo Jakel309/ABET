@@ -82,5 +82,4 @@
         <span class="required-indicator">*</span>
     </label>
     <g:textField name="email" required="" value="${personInstance?.email}"/>
-
 </div>
