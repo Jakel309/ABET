@@ -1,5 +1,4 @@
 body {
-  padding-top: 40px;
   padding-bottom: 40px;
   background-color: #eee;
   font-family: "Campton", Verdana, Tahoma, Arial, sans-serif;
@@ -7,8 +6,22 @@ body {
   color: gray;
 }
 
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #F26B37;
+    text-decoration: none;
+}
+
+.questions {
+	max-width: 70% !important;
+}
+
 .form-signin {
-  max-width: 330px;
+  max-width: 500px;
   padding: 15px;
   margin: 0 auto;
 }
@@ -36,6 +49,16 @@ body {
 }
 .form-signin input[type="password"] {
   margin-bottom: 10px;
+}
+
+.input-lg {
+	height: 46px !important;
+}
+
+.comments {
+	max-width: 80%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .logoBackground {
@@ -67,4 +90,23 @@ body {
 
 .spacer {
 	margin-top: 20px;
+}
+
+.create-btn {
+	margin-top: 25px;
+}
+
+.submit-btn {
+	margin-top: 25px;
+	max-width: 250px;
+}
+
+.table {
+	max-width: 97%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.nav {
+	margin-top: 10px;
 }

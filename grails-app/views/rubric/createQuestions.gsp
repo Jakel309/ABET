@@ -4,12 +4,18 @@
 <meta name="layout" content="main" />
 </head>
 <body>
+
+	<div class="nav container" role="navigation">
+				<div class='col-md-1'><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/> </a></div>
+	</div>
+		
     <div class='container'>
-    <g:form action="addQuestions" name="addQuestions" class='form-signin'>
-        <h2 class="form-signin-heading">Add Your Rubric Questions</h2>
+    <g:form action="addQuestions" name="addQuestions" class='form-signin questions'>
+        <h2 class="form-signin-heading">Rubric Questions</h2>
         <g:each var='i' in="${1..numComp }">
             <p>
-                Rubric Question ${i}:<input type="text" name="question${i}" size=200 height=250/>
+            	<label for='form-name' class="sr-only">Question ${i}</label>
+            	<input type='text' class='form-control' name="question${i}" placeholder="question ${i}" required></input>
             </p>
         </g:each>
         <input type="text" name="id" value="${id }" hidden="true"/>

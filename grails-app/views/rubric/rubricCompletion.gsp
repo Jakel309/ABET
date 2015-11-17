@@ -4,10 +4,15 @@
 <meta name="layout" content="main" />
 </head>
 <body>
-
+	<div class="nav container" role="navigation">
+				<div class='col-md-1'><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/> </a></div>
+	</div>
+		
+	<div class="container">
+	<h1>Complete Rubric for Your Class</h1>
 	Values in percent value of class total
 	<form action="rubricSubmit" name="rubricSubmit">
-		<table>
+		<table class='table table-striped'>
 			<tr>
 				<td>Question</td>
 				<td>Unacceptable</td>
@@ -30,10 +35,9 @@
 				</tr>
 			</g:each>
 		</table>
-		Add any comments here:
-		<g:textArea name="comments" rows="5" cols="40" />
+		<g:textArea name="comments" class="form-control comments" rows="3" placeholder="Comments..." />
 		<input type="text" name="id" value="${id}" hidden="true">
-		<g:submitButton name="rubricSubmit" value="Rubric Submit" />
+		<g:submitButton name="rubricSubmit" value="Submit Rubric" class="submit-btn btn btn-lg btn-primary btn-block" />
 	</form>
 </body>
 </html>

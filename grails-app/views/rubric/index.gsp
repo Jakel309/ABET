@@ -8,6 +8,10 @@ def rCont = grailsApplication.classLoader.loadClass("com.ABET.RubricController")
     <meta name="layout" content="main" />
 </head>
 <body>
+	<div class="nav container" role="navigation">
+				<div class='col-md-1'><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/> </a></div>
+	</div>
+		
     <div class='container'>
         <div class='form-signin spacer'>
 		    <g:link action="newRubric" class='btn btn-lg btn-primary btn-block'>Create New Rubric</g:link>

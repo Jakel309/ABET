@@ -8,11 +8,11 @@
 
 
 <div class="fieldcontain ${hasErrors(bean: worksheetInstance, field: 'name', 'error')} required">
-	<label for="name">
+	<label for="name" class='sr-only'>
 		<g:message code="worksheet.name.label" default="Name" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="name" required="" value="${worksheetInstance?.name}"/>
+	<g:textField name="name" required="" value="${worksheetInstance?.name}" class='form-control required-indicator' placeholder="name*"/>
 
 </div>
 
@@ -22,7 +22,7 @@
 		<span class="required-indicator">*</span>
 	</label>
     
-    <select name="owner">
+    <select name="owner" class="form-control input-lg">
         <g:each in="${personCont.getPersons()}" var="opt">
             <g:if test="${personInstance?.roleId==opt[0]}">
                 <option selected="selected" value="${opt[0] }">${opt[1] }</option>            
@@ -40,7 +40,7 @@
 		<g:message code="worksheet.program.label" default="Program" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="program" name="program.id" from="${com.ABET.Program.list()}" optionKey="id" required="" value="${worksheetInstance?.program?.id}" class="many-to-one"/>
+	<g:select id="program" name="program.id" from="${com.ABET.Program.list()}" optionKey="id" required="" value="${worksheetInstance?.program?.id}" class="many-to-one form-control input-lg"/>
 
 </div>
 

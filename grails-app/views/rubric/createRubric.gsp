@@ -4,6 +4,9 @@
 <meta name="layout" content="main" />
 </head>
 <body>
+	<div class="nav container" role="navigation">
+				<div class='col-md-1'><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/> </a></div>
+	</div>
     <div id='login' class='container'>
     <g:form action="createRubric" name="createRubric" class='form-signin'>
         <h2 class="form-signin-heading">Form Details</h2>
