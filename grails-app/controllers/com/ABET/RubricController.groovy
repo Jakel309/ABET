@@ -55,7 +55,7 @@ class RubricController {
 		return rows
 	}
 	
-	def renderWorksheet(id){
+	def renderWorksheet(String id){
 		println id
 		render(view:'index')
 	}
