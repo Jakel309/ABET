@@ -5,9 +5,9 @@ package com.ABET
 import grails.test.mixin.*
 import spock.lang.*
 
-@TestFor(WSQuestionsController)
-@Mock(WSQuestions)
-class WSQuestionsControllerSpec extends Specification {
+@TestFor(WorksheetQuestionsController)
+@Mock(WorksheetQuestions)
+class WorksheetQuestionsControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
@@ -38,7 +38,7 @@ class WSQuestionsControllerSpec extends Specification {
         when:"The save action is executed with an invalid instance"
             request.contentType = FORM_CONTENT_TYPE
             request.method = 'POST'
-            def WSQuestions = new WSQuestions()
+            def WSQuestions = new WorksheetQuestions()
             WSQuestions.validate()
             controller.save(WSQuestions)
 
@@ -49,7 +49,7 @@ class WSQuestionsControllerSpec extends Specification {
         when:"The save action is executed with a valid instance"
             response.reset()
             populateValidParams(params)
-            WSQuestions = new WSQuestions(params)
+            WSQuestions = new WorksheetQuestions(params)
 
             controller.save(WSQuestions)
 
@@ -68,7 +68,7 @@ class WSQuestionsControllerSpec extends Specification {
 
         when:"A domain instance is passed to the show action"
             populateValidParams(params)
-            def WSQuestions = new WSQuestions(params)
+            def WSQuestions = new WorksheetQuestions(params)
             controller.show(WSQuestions)
 
         then:"A model is populated containing the domain instance"
@@ -84,7 +84,7 @@ class WSQuestionsControllerSpec extends Specification {
 
         when:"A domain instance is passed to the edit action"
             populateValidParams(params)
-            def WSQuestions = new WSQuestions(params)
+            def WSQuestions = new WorksheetQuestions(params)
             controller.edit(WSQuestions)
 
         then:"A model is populated containing the domain instance"
@@ -104,7 +104,7 @@ class WSQuestionsControllerSpec extends Specification {
 
         when:"An invalid domain instance is passed to the update action"
             response.reset()
-            def WSQuestions = new WSQuestions()
+            def WSQuestions = new WorksheetQuestions()
             WSQuestions.validate()
             controller.update(WSQuestions)
 
@@ -115,7 +115,7 @@ class WSQuestionsControllerSpec extends Specification {
         when:"A valid domain instance is passed to the update action"
             response.reset()
             populateValidParams(params)
-            WSQuestions = new WSQuestions(params).save(flush: true)
+            WSQuestions = new WorksheetQuestions(params).save(flush: true)
             controller.update(WSQuestions)
 
         then:"A redirect is issues to the show action"
@@ -136,7 +136,7 @@ class WSQuestionsControllerSpec extends Specification {
         when:"A domain instance is created"
             response.reset()
             populateValidParams(params)
-            def WSQuestions = new WSQuestions(params).save(flush: true)
+            def WSQuestions = new WorksheetQuestions(params).save(flush: true)
 
         then:"It exists"
             WSQuestions.count() == 1

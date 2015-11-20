@@ -18,8 +18,9 @@
             	<input type='text' class='form-control' name="question${i}" placeholder="question ${i}" required></input>
             </p>
         </g:each>
-        <input type="text" name="id" value="${id }" hidden="true"/>
-        <input type="text" name="numComp" value="${numComp }" hidden="true"/>
+        <input type="hidden" name="id" value="${id }"/>
+        <input type="hidden" name="numComp" value="${numComp }"/>
+        <input type="hidden" name="w_id" value="${w_id }">
         <g:submitButton name="addQuestions" value="Add Questions" class="btn btn-lg btn-primary btn-block"/>
     </g:form>
     </div>

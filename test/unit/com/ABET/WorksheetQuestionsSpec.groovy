@@ -6,8 +6,8 @@ import spock.lang.Specification
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
-@TestFor(WSQuestions)
-class WSQuestionsSpec extends Specification {
+@TestFor(WorksheetQuestions)
+class WorksheetQuestionsSpec extends Specification {
 
     def setup() {
     }

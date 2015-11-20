@@ -1,5 +1,5 @@
 
-<%@ page import="com.ABET.WSQuestions" %>
+<%@ page import="com.ABET.WorksheetQuestions" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -21,7 +21,7 @@
 		</div>
 		<div class='container'>
 		
-		<div id="list-WSQuestions" class="content scaffold-list" role="main">
+		<div id="list-WorksheetQuestions" class="content scaffold-list" role="main">
 			<h1>General Criterion</h1>
 			<g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>
@@ -30,26 +30,26 @@
 			<thead>
 					<tr>
 					
-						<g:sortableColumn property="question" title="${message(code: 'WSQuestions.question.label', default: 'Question')}" />
+						<g:sortableColumn property="question" title="${message(code: 'WorksheetQuestions.question.label', default: 'Question')}" />
 					
-						<g:sortableColumn property="isActive" title="${message(code: 'WSQuestions.isActive.label', default: 'Is Active')}" />
+						<g:sortableColumn property="isActive" title="${message(code: 'WorksheetQuestions.isActive.label', default: 'Is Active')}" />
 					
 					</tr>
 				</thead>
 				<tbody>
-				<g:each in="${WSQuestionsInstanceList}" status="i" var="WSQuestionsInstance">
+				<g:each in="${worksheetQuestionsInstanceList}" status="i" var="worksheetQuestionsInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${WSQuestionsInstance.id}">${fieldValue(bean: WSQuestionsInstance, field: "question")}</g:link></td>
+						<td><g:link action="edit" id="${worksheetQuestionsInstance.id}">${fieldValue(bean: worksheetQuestionsInstance, field: "question")}</g:link></td>
 					
-						<td><g:formatBoolean boolean="${WSQuestionsInstance.isActive}" /></td>
+						<td><g:formatBoolean boolean="${worksheetQuestionsInstance.isActive}" /></td>
 					
 					</tr>
 				</g:each>
 				</tbody>
 			</table>
 			<div class="pagination">
-				<g:paginate total="${WSQuestionsInstanceCount ?: 0}" />
+				<g:paginate total="${worksheetQuestionsInstanceCount ?: 0}" />
 			</div>
 		</div>
 		</div>

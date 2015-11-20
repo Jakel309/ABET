@@ -1,10 +1,12 @@
-package com.ABET
+	package com.ABET
 
 
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import com.ABET.PersonRole
+import com.ABET.Role
+import com.ABET.Person
 import grails.plugin.springsecurity.annotation.Secured
 import grails.plugin.springsecurity.SpringSecurityService
 import grails.plugin.springsecurity.SpringSecurityUtils
@@ -64,12 +66,21 @@ class PersonController {
             return
         }
 
-        personInstance.save flush:true
+        //personInstance.save flush:true
 
+		def newUser=new Person(username: personInstance.username, password: personInstance.password, roleId:personInstance.roleId, email:personInstance.email).save(flush:true)
+		def role=Role.findByAuthority(roleService.getRoleById(personInstance.roleId)[0][0])
+		println newUser
+		println "The following are println"
+		println role
+		println "Second Role"
+		println roleService.getRoleById(personInstance.roleId)[0][0]
+		PersonRole.create newUser,role, true
+		
         request.withFormat {
             form multipartForm {
-				personRoleService.createPR(personInstance.id, personInstance.roleId)
-                flash.message = message(code: 'default.created.message', args: [message(code: 'person.label', default: 'Person'), personInstance.id])
+				//personRoleService.createPR(personInstance.id, personInstance.roleId)
+                flash.message = message(code: 'default.created.message', args: [message(code: 'person.label', default: 'Person'), personInstance.username])
                 redirect (action:'index')
             }
             '*' { respond personInstance, [status: CREATED] }

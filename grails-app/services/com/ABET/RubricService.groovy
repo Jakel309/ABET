@@ -44,17 +44,28 @@ class RubricService {
 		return rows
 	}
 	
-	def addResults(Map results,id){
+	def addResults(Map results,id, w_id){
 		def sql=new Sql(dataSource)
-		sql.execute("""insert into results (version,results,r_id) values (1,?,?)""",new JsonBuilder(results).toString(), id)
+		def resultId=sql.rows("""select id from results where worksheet_id=?""",w_id)[0]['ID']
+		if(resultId){
+			sql.execute("""update results set results=? where worksheet_id=?""",new JsonBuilder(results).toString(),w_id)
+		}else{
+			sql.execute("""insert into results (version,results,r_id,WORKSHEET_ID) values (1,?,?,?)""",new JsonBuilder(results).toString(), id,w_id)
+		}
 	}
 	
 	//This is for proof of concept to convert from clob to map. It's painful
-	def getResults(){
+	def getResults(id){
 		def sql=new Sql(dataSource)
-		def rows=sql.rows("""select results from results""")
-		java.sql.Clob clob = (java.sql.Clob) rows[0]['RESULTS']
-		String valueFromClob = clob.getSubString(1, clob.length().intValue())
-		Map map=new JsonSlurper().parseText(valueFromClob)
+		def rows=sql.rows("""select results from results where r_id=?""",id)
+		Map map=[:]
+		if(rows){
+			java.sql.Clob clob = (java.sql.Clob) rows[0]['RESULTS']
+			if(clob){
+				String valueFromClob = clob.getSubString(1, clob.length().intValue())
+				map=new JsonSlurper().parseText(valueFromClob)
+			}
+		}
+		return map
 	}
 }

@@ -14,7 +14,7 @@
 		           <br/>
 		           <g:link controller="program" class="btn btn-lg btn-primary btn-block">Create New Program</g:link>
 		           <br/>
-		           <g:link controller="WSQuestions" class="btn btn-lg btn-primary btn-block">Manage Worksheet Questions</g:link>
+		           <g:link controller="worksheetQuestions" class="btn btn-lg btn-primary btn-block">Manage Worksheet Questions</g:link>
 		           <br/>
 		           <g:link controller="worksheet" class="btn btn-lg btn-primary btn-block">Create And Distribute Worksheets</g:link>
 		           <br/>

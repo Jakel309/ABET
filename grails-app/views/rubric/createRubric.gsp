@@ -18,6 +18,7 @@
             <label for='num-questions' class="sr-only">Number of Ranked Questions: </label>
             <input type='text' class='form-control' name='numComp' placeholder='Number of Rubric Questions' required>
         </p>
+        <input type="hidden" name="w_id" value="${w_id }">
         <g:submitButton name="createRubric" value="Create Rubric" class="btn btn-lg btn-primary btn-block" />
     </g:form>
     </div>

@@ -1,6 +1,6 @@
 package com.ABET
 
-class WSQuestions {
+class WorksheetQuestions {
 	
 	int id
 	String question
