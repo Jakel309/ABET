@@ -54,7 +54,12 @@
 				</tr>
 			</g:each>
 		</table>
-		<g:textArea name="comments" class="form-control comments" rows="3" placeholder="Comments..." />
+		<g:if test="${r_results}">
+		  <g:textArea name="comments" class="form-control comments" rows="3" placeholder="Comments..." value="${r_results['Comments'] }" />
+		</g:if>
+		<g:else>
+		  <g:textArea name="comments" class="form-control comments" rows="3" placeholder="Comments..." />
+		</g:else>
 		<input type="hidden" name="r_id" value="${r_id}">
 		<input type="hidden" name="w_id" value="${w_id}">
 		<g:submitButton name="rubricSubmit" value="Submit Rubric" class="submit-btn btn btn-lg btn-primary btn-block" />

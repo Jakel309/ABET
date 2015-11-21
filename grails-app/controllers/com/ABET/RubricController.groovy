@@ -62,7 +62,7 @@ class RubricController {
 			temp.put("Outstanding", params["${i}-4"])
 			results.put(params["question${i}"], temp)
 		}
-		
+		results.put("Comments",params['comments'])
 		rubricService.addResults(results,params.r_id.toInteger(),params.w_id.toInteger())
 		render(view:'index')
 	}
@@ -81,7 +81,7 @@ class RubricController {
 			Map ws_results=worksheetService.getWorksheetAnswers(w_id)
 			def r_rows=rubricService.getRubricQuestions(r_id)
 			def w_rows=worksheetQuestionsService.getWorksheetQuestions()
-			Map r_results=rubricService.getResults(r_id)
+			Map r_results=rubricService.getResults(w_id)
 			println r_results
 			render (view:'worksheetCompletion', model:[questions:r_rows, r_id:r_id, w_id:w_id, w_questions:w_rows, ws_results:ws_results, r_results:r_results])
 		}

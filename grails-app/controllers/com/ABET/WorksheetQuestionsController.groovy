@@ -12,6 +12,7 @@ class WorksheetQuestionsController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
+		println WorksheetQuestions.list(params)
         respond WorksheetQuestions.list(params), model:[worksheetQuestionsInstanceCount: WorksheetQuestions.count()]
     }
 

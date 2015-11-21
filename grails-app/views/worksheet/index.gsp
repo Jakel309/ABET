@@ -13,13 +13,6 @@
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<!-- <a href="#list-worksheet" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>  -->
 		
 		<div class="nav container" role="navigation">
 				<div class='col-md-1'><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></div>
@@ -41,6 +34,8 @@
 						<g:sortableColumn property="owner" title="${message(code: 'worksheet.owner.label', default: 'Owner')}" />
 					
 						<th><g:message code="worksheet.program.label" default="Program" /></th>
+						
+						<th style="text-align:center;">Actions</th>
 					
 					</tr>
 				</thead>
@@ -53,6 +48,13 @@
 						<td>${personCont.translatePerson(worksheetInstance?.owner)}</td>
 					
 						<td>${fieldValue(bean: worksheetInstance, field: "program")}</td>
+						
+						<td>
+						  <g:if test="${worksheetInstance.wsResults}">
+						      <g:link action="displayResults" class="btn btn-lg btn-primary btn-block" params='[w_id:"${worksheetInstance.id}"]'>View Worksheet</g:link>
+						  </g:if>
+						  <g:link action="delete" class="btn btn-lg btn-primary btn-block" params='[worksheetInstance:"${worksheetInstance}"]'>Delete Worksheet</g:link>
+						</td>
 					
 					</tr>
 				</g:each>

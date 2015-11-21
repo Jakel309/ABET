@@ -27,7 +27,7 @@ class BootStrap {
 		PersonRole.create readOnlyUser, readOnlyRole, true
 		
 		sql.execute("""ALTER TABLE worksheet MODIFY ws_results longtext""")
-		sql.execute("""ALTER TABLE results MODIFY results longtext""")
+		sql.execute("""ALTER TABLE worksheet MODIFY r_results longtext""")
 		
     }
     def destroy = {

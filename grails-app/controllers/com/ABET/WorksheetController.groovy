@@ -1,7 +1,5 @@
 package com.ABET
 
-
-
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
@@ -9,11 +7,24 @@ import grails.transaction.Transactional
 class WorksheetController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+	
+	def worksheetService
+	def rubricService
+	def worksheetQuestionsService
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Worksheet.list(params), model:[worksheetInstanceCount: Worksheet.count()]
     }
+	
+	def displayResults(int w_id){
+		def r_id=worksheetService.getRubricId(w_id)
+		Map ws_results=worksheetService.getWorksheetAnswers(w_id)
+		def r_rows=rubricService.getRubricQuestions(r_id)
+		def w_rows=worksheetQuestionsService.getWorksheetQuestions()
+		Map r_results=rubricService.getResults(w_id)
+		render (view:'displayResults', model:[questions:r_rows, r_id:r_id, w_id:w_id, w_questions:w_rows, ws_results:ws_results, r_results:r_results])
+	}
 
     def show(Worksheet worksheetInstance) {
         respond worksheetInstance

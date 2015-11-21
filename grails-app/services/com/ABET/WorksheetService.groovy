@@ -1,7 +1,9 @@
 package com.ABET
 
 import grails.transaction.Transactional
+import org.springframework.transaction.annotation.Transactional
 import groovy.sql.Sql
+import com.ABET.Worksheet
 
 import java.sql.Clob
 import java.util.Map;
@@ -37,14 +39,22 @@ class WorksheetService {
 		return map
 	}
 	
-	def addResults(Map results,id){
-		def sql=new Sql(dataSource)
-		sql.execute("""update worksheet set ws_results=? where id=?""",new JsonBuilder(results).toString(), id)
+	@Transactional
+	def addResults(Map results,int id){
+		def instance = Worksheet.get(id)
+		instance.wsResults = new JsonBuilder(results).toString()
+		instance.save()
 	}
 	
 	def getRubricId(id){
 		def sql=new Sql(dataSource)
 		def rows=sql.rows("""select r_id from worksheet where id=?""",id)
 		return rows[0]['R_ID']
+	}
+	
+	def getWorksheetIds(){
+		def sql=new Sql(dataSource)
+		def rows=sql.rows("""select id from worksheet""")
+		return rows
 	}
 }

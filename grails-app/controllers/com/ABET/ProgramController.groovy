@@ -1,7 +1,5 @@
 package com.ABET
 
-
-
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
@@ -12,6 +10,7 @@ class ProgramController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
+		println Program.list(params)
         respond Program.list(params), model:[programInstanceCount: Program.count()]
     }
 

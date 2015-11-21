@@ -8,6 +8,7 @@ class Worksheet {
 	static belongsTo=[program:Program]
 	int owner
 	int r_id
+	String rResults
 
     static constraints = {
 		name blank:false
@@ -15,9 +16,11 @@ class Worksheet {
 		wsResults nullable:true
 		results nullable:true
 		r_id nullable:true
+		rResults nullable:true
     }
 	
 	static mapping={
 		wsResults type:'text'
+		rResults type:'text'
 	}
 }
