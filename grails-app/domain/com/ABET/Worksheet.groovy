@@ -13,7 +13,6 @@ class Worksheet {
 		name blank:false
 		owner blank:false
 		wsResults nullable:true
-		results nullable:true
 		r_id nullable:true
 		rResults nullable:true
     }
