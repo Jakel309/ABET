@@ -4,7 +4,6 @@ class Worksheet {
 	
 	String name
 	String wsResults
-	static hasOne=[results:Results]
 	static belongsTo=[program:Program]
 	int owner
 	int r_id
