@@ -1,5 +1,6 @@
 package com.ABET
 
+//This is used to assign a role to a person
 import grails.gorm.DetachedCriteria
 import groovy.transform.ToString
 

@@ -1,5 +1,6 @@
 package com.ABET
 
+//This is the domain class that dictates the users privileges.
 class Role implements Serializable {
 
 	private static final long serialVersionUID = 1

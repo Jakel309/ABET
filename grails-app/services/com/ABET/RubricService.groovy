@@ -10,46 +10,53 @@ import groovy.json.JsonSlurper
 class RubricService {
 	def dataSource
 
+	//Adds rubric data to database given the name and the number of questions
     def addRubric(String name, int numComp) {
 		def sql=new Sql(dataSource)
 		sql.execute("""insert into rubrics (version,name,num_ques) values (1,?,?)""",name,numComp)
     }
 	
+	//Gets the id for a rubric given the name of the rubric
 	def getRubricIdByName(String name){
 		def sql=new Sql(dataSource)
 		def rows=sql.rows("""select id from rubrics where name=?""",name)[0][0]
 		return rows
 	}
 	
+	//Creates a rubric question and added to the database
 	def createQuestion(String question, int id){
 		def sql=new Sql(dataSource)
 		sql.execute("""insert into questions(version, question, r_id) values (1,?,?)""",question,id)
 	}
 	
+	//Gets all rubrics from the database
 	def getRubrics(){
 		def sql=new Sql(dataSource)
 		def rows=sql.rows("""select id, name from rubrics""")
 		return rows
 	}
 	
+	//Gets all the questions for a rubric given the rubric's id
 	def getRubricQuestions(id){
 		def sql=new Sql(dataSource)
 		def rows=sql.rows("""select question from questions where r_id=?""",id)
 		return rows
 	}
 	
+	//Returns all information of a rubric given its id
 	def getRubricById(id){
 		def sql=new Sql(dataSource)
 		def rows=sql.rows("""select * from rubrics where id=?""",id)
 		return rows
 	}
 	
+	//Adds the rubric results to the worksheet table given the results and the id of the worksheet
 	def addResults(Map results,id, w_id){
 		def sql=new Sql(dataSource)
 		sql.execute("""update worksheet set r_results=? where id=?""",new JsonBuilder(results).toString(),w_id)
 	}
 	
-	//This is for proof of concept to convert from clob to map. It's painful
+	//Returns the rubric results from the database and converts them into a map
 	def getResults(id){
 		def sql=new Sql(dataSource)
 		def rows=sql.rows("""select r_results from worksheet where id=?""",id)

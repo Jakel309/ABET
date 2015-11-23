@@ -1,5 +1,6 @@
 package com.ABET
 
+//The schema and methods for a user account
 class Person implements Serializable {
 
 	private static final long serialVersionUID = 1

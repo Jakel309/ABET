@@ -1,5 +1,6 @@
 package com.ABET
 
+//This is the schema for the questions for a rubric
 class Questions {
 	
 	String question

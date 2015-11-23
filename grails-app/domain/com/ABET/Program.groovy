@@ -1,5 +1,6 @@
 package com.ABET
 
+//This is the schema for a program
 class Program {
 	
 	int id
